@@ -1,0 +1,38 @@
+{
+    "name": "agustra/adminlte-auth-package",
+    "description": "Authentication package for AdminLTE v4 with Laravel integration",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "adminlte", "auth", "authentication", "login"],
+    "authors": [
+        {
+            "name": "Agus USK",
+            "email": "agus@example.com"
+        }
+    ],
+    "homepage": "https://github.com/agustra/adminlte-auth-package",
+    "support": {
+        "issues": "https://github.com/agustra/adminlte-auth-package/issues",
+        "source": "https://github.com/agustra/adminlte-auth-package"
+    },
+    "autoload": {
+        "psr-4": {
+            "AgusUsk\\AdminLteAuth\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^12.0",
+        "agustra/adminlte-v4-package": "^1.0|dev-main",
+        "spatie/laravel-permission": "^6.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AgusUsk\\AdminLteAuth\\Providers\\AuthServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
