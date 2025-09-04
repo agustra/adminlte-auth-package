@@ -48,7 +48,7 @@
                 </div>
             @endif
             
-            <form action="{{ route('adminlte.profile.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 

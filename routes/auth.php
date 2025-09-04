@@ -33,6 +33,6 @@ if (config('adminlte-auth.enable_password_reset', true)) {
 // Authenticated routes
 Route::middleware('auth')->group(function () {
     // Profile
-    Route::get(config('adminlte-auth.routes.profile', '/profile'), [ProfileController::class, 'show'])->name('adminlte.profile');
-    Route::put(config('adminlte-auth.routes.profile', '/profile'), [ProfileController::class, 'update'])->name('adminlte.profile.update');
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
