@@ -27,7 +27,6 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
             
-            // Force redirect to dashboard
             return redirect('/dashboard');
         }
         throw ValidationException::withMessages([

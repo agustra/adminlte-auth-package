@@ -4,41 +4,37 @@ Authentication system for AdminLTE v4 with Laravel integration.
 
 ## Features
 
-- ✅ Login/Logout with AdminLTE styling
-- ✅ User Registration (optional)
+- ✅ Login/Logout with AdminLTE v4 styling
+- ✅ User Registration (configurable)
 - ✅ Forgot Password & Reset
 - ✅ User Profile Management
 - ✅ Role & Permission (Spatie Permission)
-- ✅ Avatar Upload
 - ✅ Remember Me functionality
-- ✅ Seamless AdminLTE integration
+- ✅ Responsive AdminLTE v4 design
+- ✅ CSRF Protection
+- ✅ Session Management
 
-## 📦 Skenario Instalasi
+## 📦 Installation
 
-### 🎨 **Skenario 1: UI + Authentication (Lengkap)**
-
-Instalasi lengkap dari awal:
+### Quick Install (Recommended)
 
 ```bash
-# Install UI package
-composer require agustra/adminlte-v4-package
+# Install both UI and Auth packages
+composer require agustra/adminlte-v4-package agustra/adminlte-auth-package
 
-# Install authentication package
-composer require agustra/adminlte-auth-package
-
-# Publish assets UI
+# Publish AdminLTE assets
 php artisan adminlte:publish-assets
 
 # Install authentication system
 php artisan adminlte:install-auth
 
-# Jalankan migration
+# Run migrations
 php artisan migrate
 ```
 
-### 🔧 **Skenario 2: Tambah Authentication ke UI yang Sudah Ada**
+### Add Auth to Existing AdminLTE UI
 
-Jika sudah ada `agustra/adminlte-v4-package`:
+If you already have `agustra/adminlte-v4-package`:
 
 ```bash
 # Install authentication package
@@ -47,22 +43,7 @@ composer require agustra/adminlte-auth-package
 # Install authentication system
 php artisan adminlte:install-auth
 
-# Jalankan migration
-php artisan migrate
-```
-
-### 🔐 **Skenario 3: Hanya Authentication (Custom UI)**
-
-Jika ingin menggunakan authentication dengan UI custom:
-
-```bash
-# Install authentication package (akan auto-install UI dependency)
-composer require agustra/adminlte-auth-package
-
-# Install authentication tanpa UI
-php artisan adminlte:install-auth --no-ui
-
-# Jalankan migration
+# Run migrations
 php artisan migrate
 ```
 
@@ -74,11 +55,14 @@ php artisan vendor:publish --tag=adminlte-auth-config
 
 ## Usage
 
-### Routes
+### Available Routes
 - `/login` - Login page
 - `/register` - Registration page (if enabled)
 - `/forgot-password` - Password reset request
+- `/reset-password/{token}` - Password reset form
 - `/profile` - User profile management
+- `/logout` - Logout (POST)
+- `/dashboard` - Protected dashboard (requires auth)
 
 ### Configuration
 
@@ -108,23 +92,24 @@ Route::middleware('auth')->group(function () {
 ### User Model
 
 The package provides an extended User model with:
-- Avatar support
-- Phone & address fields
 - Spatie Permission integration
+- Standard Laravel authentication
+- Profile management
 
 ```php
 use AgusUsk\AdminLteAuth\Models\User;
 
 $user = User::find(1);
 $user->assignRole('admin');
-$avatarUrl = $user->avatar_url;
+$user->givePermissionTo('edit posts');
 ```
 
 ## Requirements
 
 - PHP ^8.2
-- Laravel ^11.0
-- agustra/adminlte-v4-package
+- Laravel ^12.0
+- agustra/adminlte-v4-package ^1.0
+- spatie/laravel-permission ^6.0
 
 ## License
 
