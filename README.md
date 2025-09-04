@@ -13,19 +13,61 @@ Authentication system for AdminLTE v4 with Laravel integration.
 - ✅ Remember Me functionality
 - ✅ Seamless AdminLTE integration
 
-## Installation
+## 📦 Skenario Instalasi
 
-### 1. Install Package
+### 🎨 **Skenario 1: UI + Authentication (Lengkap)**
+
+Instalasi lengkap dari awal:
+
 ```bash
+# Install UI package
+composer require agustra/adminlte-v4-package
+
+# Install authentication package
 composer require agustra/adminlte-auth-package
-```
 
-### 2. Install Authentication
-```bash
+# Publish assets UI
+php artisan adminlte:publish-assets
+
+# Install authentication system
 php artisan adminlte:install-auth
+
+# Jalankan migration
+php artisan migrate
 ```
 
-### 3. Configure (Optional)
+### 🔧 **Skenario 2: Tambah Authentication ke UI yang Sudah Ada**
+
+Jika sudah ada `agustra/adminlte-v4-package`:
+
+```bash
+# Install authentication package
+composer require agustra/adminlte-auth-package
+
+# Install authentication system
+php artisan adminlte:install-auth
+
+# Jalankan migration
+php artisan migrate
+```
+
+### 🔐 **Skenario 3: Hanya Authentication (Custom UI)**
+
+Jika ingin menggunakan authentication dengan UI custom:
+
+```bash
+# Install authentication package (akan auto-install UI dependency)
+composer require agustra/adminlte-auth-package
+
+# Install authentication tanpa UI
+php artisan adminlte:install-auth --no-ui
+
+# Jalankan migration
+php artisan migrate
+```
+
+## ⚙️ Konfigurasi (Opsional)
+
 ```bash
 php artisan vendor:publish --tag=adminlte-auth-config
 ```
